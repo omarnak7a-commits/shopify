@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tighter2 leading-tight;
+  }
+
+  ::selection {
+    @apply bg-accent-100 text-ink;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-canvas rounded;
+  }
+
+  /* Remove default ring offset rounding on inline elements */
+  a:focus-visible, button:focus-visible {
+    @apply rounded-none;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-canvas hover:bg-ink-soft active:bg-ink;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-accent-600 active:bg-accent-700;
+  }
+
+  .btn-outline {
+    @apply btn border border-line bg-transparent text-ink hover:border-ink hover:bg-canvas;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-ink hover:bg-line/50;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-line text-ink placeholder:text-ink-muted/60 transition-colors duration-200 focus:border-ink focus:ring-0;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-ink mb-2;
+  }
+
+  .card {
+    @apply bg-white border border-line;
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, #f0eeec 0%, #f8f6f4 50%, #f0eeec 100%);
+    background-size: 800px 100%;
+    animation: shimmer 1.6s infinite linear;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
